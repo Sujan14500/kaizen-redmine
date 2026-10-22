@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Redmine PO Workstation
-======================
+Kaizen Workstation
+==================
 A single-file desktop app for Product Owners:
 
   * Connects to Redmine through its REST API (Base URL + API key)
@@ -62,7 +62,7 @@ except ImportError:  # Friendly message instead of a crash
 # --------------------------------------------------------------------------
 # Constants
 # --------------------------------------------------------------------------
-APP_NAME = "Redmine PO Workstation"
+APP_NAME = "Kaizen Workstation"
 APP_VERSION = "1.0"
 LEGACY_CONFIG_PATH = Path.home() / ".redmine_po_workstation.json"
 LEGACY_DRAFTS_PATH = Path.home() / ".redmine_po_workstation_drafts.json"
@@ -131,7 +131,7 @@ def apply_palette(name: str):
 
 
 def saved_theme(cfg: dict) -> str:
-    """The Workstation's own choice, else whatever PO Home uses, else light."""
+    """The Workstation's own choice, else whatever Kaizen Home uses, else light."""
     if cfg.get("theme") in ("light", "dark"):
         return cfg["theme"]
     try:
@@ -6419,7 +6419,7 @@ class App(tk.Tk):
     HELP = {
         "load": ("Developer load", "One row per developer for the chosen period. Each #ticket chip sits on its due "
                                    "date (✅ = groomed). Red days = busy (up to their latest due date), green = free, "
-                                   "grey = leave or holiday (leave comes from PO Home's Team availability). The left "
+                                   "grey = leave or holiday (leave comes from Kaizen Home's Team availability). The left "
                                    "card says until when they're busy, from when they're free and how many free days "
                                    "they have, so you can decide who to give the next ticket to. Tickets without a "
                                    "due date are listed at the end and are not counted. Click a person to list all "
@@ -7459,7 +7459,7 @@ class App(tk.Tk):
                 "Tickets tab to 'All open'." if mine else "")
         src = "all projects" if self.var_load_all.get() else f"the projects picked in Tickets ({self.mp_project.summary()})"
         self.lbl_load_info.configure(
-            text=f"Period: {wlabel}  ·  {plural(len(days), 'working day')}  ·  tickets from {src}  ·  leave from PO Home."
+            text=f"Period: {wlabel}  ·  {plural(len(days), 'working day')}  ·  tickets from {src}  ·  leave from Kaizen Home."
                  f"{warn}")
         g = self.load_grid
         ncols = len(days) + 3

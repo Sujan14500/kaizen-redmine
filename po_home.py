@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-PO Home
-=======
+Kaizen Home
+===========
 Your personal home base as a Product Owner:
 
   * 🧭 Redmine Workstation   – opens the workstation, with a live peek at what needs you
@@ -41,7 +41,7 @@ import tkinter as tk
 import tkinter.font as tkfont
 from tkinter import filedialog, messagebox, simpledialog, ttk
 
-APP_NAME = "PO Home"
+APP_NAME = "Kaizen Home"
 IS_WINDOWS = platform.system() == "Windows"
 IS_MAC = platform.system() == "Darwin"
 HERE = Path(__file__).resolve().parent
@@ -1518,7 +1518,7 @@ class POHome(tk.Tk):
     def _build_shell(self):
         bar = tk.Frame(self, bg=C["panel"], highlightbackground=C["line"], highlightthickness=1)
         bar.pack(fill="x", side="top")
-        home = tk.Label(bar, text="✿  PO Home", bg=C["panel"], fg=C["accent"], font=FONTS["h1"], cursor="hand2")
+        home = tk.Label(bar, text="✿  Kaizen Home", bg=C["panel"], fg=C["accent"], font=FONTS["h1"], cursor="hand2")
         home.pack(side="left", padx=(18, 12), pady=10)
         home.bind("<Button-1>", lambda e: self.show("home"))
         self.lbl_where = tk.Label(bar, text="", bg=C["panel"], fg=C["muted"], font=FONTS["body"])
@@ -4717,7 +4717,7 @@ class POHome(tk.Tk):
             vals = form_dialog(self, f"Add {plural(len(paths), 'file')}", [
                 ("category", "Category", "choice", self.LIB_CATEGORIES),
                 ("tags", "Clients / tags (optional)", "combo", [c["name"] for c in self.d["clients"]]),
-                ("copy", "Keep a copy", "check", "Keep a safe copy inside PO Home (leave unticked to always open "
+                ("copy", "Keep a copy", "check", "Keep a safe copy inside Kaizen Home (leave unticked to always open "
                                                  "the latest version of the original)")], details)
             if vals is None:
                 return
@@ -4908,7 +4908,7 @@ class POHome(tk.Tk):
                 ("Slides", str(x["slides"]) if x.get("slides") else "—"),
                 ("Added", fmt_date(x.get("added"), day=False)),
                 ("Last opened", fmt_date(x.get("opened"), day=False) if x.get("opened") else "never"),
-                ("Stored", "copy inside PO Home" if x.get("copied") else "your original file"),
+                ("Stored", "copy inside Kaizen Home" if x.get("copied") else "your original file"),
                 ("Location", x["path"])]
         for k, v in info:
             r = tk.Frame(side, bg=C["panel"])
@@ -5001,7 +5001,7 @@ class POHome(tk.Tk):
             self.refresh_library()
 
     def lib_remove(self, x):
-        extra = "\n\nThe copy kept inside PO Home will also be deleted." if x.get("copied") else \
+        extra = "\n\nThe copy kept inside Kaizen Home will also be deleted." if x.get("copied") else \
             "\n\nYour original file is NOT deleted."
         if not messagebox.askyesno(APP_NAME, f"Remove '{x['name']}' from the library?{extra}", parent=self):
             return
@@ -5103,7 +5103,7 @@ class POHome(tk.Tk):
                   ("theme", "Look", "choice", ["light", "dark"]),
                   ("auto_followup", "Client meetings", "check",
                    "Add a 'send follow-up' task after every client meeting or demo"),
-                  ("autostart", "Start", "check", "Start PO Home when Windows starts"),
+                  ("autostart", "Start", "check", "Start Kaizen Home when Windows starts"),
                   ("close_to_background", "Close button", "check",
                    "Keep running in the background (so reminders still work)")]
         vals = form_dialog(self, "Settings", fields, dict(s, workstation_path=s.get("workstation_path") or
@@ -5349,7 +5349,7 @@ class POHome(tk.Tk):
             return
         if not self._flag("told_background"):
             self._flag("told_background", True)
-            messagebox.showinfo(APP_NAME, "PO Home will keep running in the background so it can remind you.\n\n"
+            messagebox.showinfo(APP_NAME, "Kaizen Home will keep running in the background so it can remind you.\n\n"
                                           "It's minimised to your taskbar. To close it completely, use ⏻ Quit at the "
                                           "top right.", parent=self)
         if hasattr(self, "txt_notes"):
@@ -5357,7 +5357,7 @@ class POHome(tk.Tk):
         self.iconify()
 
     def quit_app(self, ask=True):
-        if ask and not messagebox.askyesno(APP_NAME, "Quit PO Home?\n\nReminders stop until you open it again.",
+        if ask and not messagebox.askyesno(APP_NAME, "Quit Kaizen Home?\n\nReminders stop until you open it again.",
                                            parent=self):
             return
         if hasattr(self, "txt_notes"):
@@ -5402,7 +5402,7 @@ def listen_for_others(app):
 
 
 def hide_console():
-    """If Windows opened a black console window just for PO Home (double-clicking the .py file), hide it.
+    """If Windows opened a black console window just for Kaizen Home (double-clicking the .py file), hide it.
     A terminal you opened yourself (VS Code, PowerShell) is left alone."""
     if not IS_WINDOWS:
         return
