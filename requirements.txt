@@ -1,0 +1,6 @@
+requests
+
+# Optional: the app offers to install these the first time a feature needs them.
+# python-docx   # Word release notes
+# openpyxl      # Excel export / import
+# sv-ttk        # Windows 11 look

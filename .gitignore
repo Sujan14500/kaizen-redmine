@@ -1,0 +1,13 @@
+# App data: settings.json holds your Redmine API key in plain text. Never commit it.
+PO_Workstation_Data/
+PO_Home_Data/
+.redmine_po_workstation*.json
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
